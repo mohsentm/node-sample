@@ -1,16 +1,31 @@
 'use strict';
 
-const express = require('express');
+const { ApolloServer, gql } = require('apollo-server');
 
-// Constants
+// // Constants
 const PORT = 80;
 const HOST = '0.0.0.0';
 
-// App
-const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World');
+// The GraphQL schema
+const typeDefs = gql`
+  type Query {
+    "A simple type for getting started!"
+    hello: String
+  }
+`;
+
+// A map of functions which return data for the schema.
+const resolvers = {
+  Query: {
+    hello: () => 'world',
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+server.listen(PORT, HOST).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
