@@ -3,11 +3,24 @@ version: '3.7'
 services:
   server:
     build:
-      context: .
+      context: ./server
       dockerfile: docker/Dockerfile
     command: "/bin/bash docker/start.sh"
     tty: true
     volumes:
-      - ./:/usr/src/app
+      - ./server:/usr/src/app
     ports:
-        - "8080:80"
+        - "8081:80"
+  
+  client:
+    build:
+      context: ./client
+      dockerfile: docker/Dockerfile
+    command: "/bin/bash docker/start.sh"
+    depends_on: 
+      - server
+    tty: true
+    volumes:
+      - ./client:/usr/src/app
+    ports:
+        - "8080:3000"
