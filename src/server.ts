@@ -17,7 +17,7 @@ const typeDefs = gql`
 // A map of functions which return data for the schema.
 const resolvers = {
   Query: {
-    hello: () => 'world',
+    hello: () => helloWorld(),
   },
 };
 
@@ -29,3 +29,8 @@ const server = new ApolloServer({
 server.listen(PORT, HOST).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
+
+
+function helloWorld(): string {
+  return 'hello world';
+}
