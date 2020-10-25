@@ -2,7 +2,7 @@
 
 import { ApolloServer, gql } from 'apollo-server';
 
-// // Constants
+// Constants
 const PORT = 80;
 const HOST = '0.0.0.0';
 
