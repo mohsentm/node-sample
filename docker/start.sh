@@ -7,4 +7,4 @@ if [[ ! -d node_modules ]]; then
   npm install
 fi
 
-npm start
+npm run start:dev

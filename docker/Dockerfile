@@ -17,6 +17,3 @@ COPY package*.json ./
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
-
-# Install nodemon for reload automatically.
-RUN npm install -g nodemon

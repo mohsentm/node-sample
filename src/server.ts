@@ -1,6 +1,6 @@
 'use strict';
 
-const { ApolloServer, gql } = require('apollo-server');
+import { ApolloServer, gql } from 'apollo-server';
 
 // // Constants
 const PORT = 80;
