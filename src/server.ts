@@ -46,7 +46,7 @@ async function testAsync(): Promise<unknown> {
       setTimeout(()=> resolve("loaded"), 1000)
     })
 
-    let result = await promise
+    await promise
 
     return promise
 }
