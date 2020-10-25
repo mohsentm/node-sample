@@ -1,6 +1,7 @@
 'use strict';
 
 import { ApolloServer, gql } from 'apollo-server';
+import { rejects } from 'assert';
 
 // Constants
 const PORT = 80;
@@ -32,5 +33,20 @@ server.listen(PORT, HOST).then(({ url }) => {
 
 
 function helloWorld(): string {
+  testAsync().then((msg) => console.log(msg))
+  console.log('hello world')
   return 'hello world';
+}
+
+
+async function testAsync(): Promise<unknown> {
+    // return Promise.resolve('loaded')
+
+    const promise = new Promise((resolve, rejects) => {
+      setTimeout(()=> resolve("loaded"), 1000)
+    })
+
+    let result = await promise
+
+    return promise
 }
